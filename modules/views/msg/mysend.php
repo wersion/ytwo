@@ -61,18 +61,18 @@ use yii\widgets\linkPager;
                         <?php foreach($msgs as $v):?>
                             <tr>
                                 <td><?=$v->id?></td>
-                                <td><?php if($v->reply):?> 我回复了：<b style="color: #D9534F"><?=$v->title?></b> <?else:?><?=$v->title?> <?endif?></td>
+                                <td><?php if($v->reply):?> 我回复了：<b style="color: #D9534F"><?=$v->title?></b> <?php else:?><?=$v->title?> <?php endif?></td>
                                 <td><?=date('Y-m-d H:i:s',$v->send_time)?></td>
                                 <td><?=$v->toname->nickname?></td>
-                                <td> <?php if($v->reply):?> <a class="text text-danger" href="javascript:void(0)">回复消息</a>  <?else:?><a class="text text-info" href="javascript:void()">普通消息</a>  <?endif?></td>
+                                <td> <?php if($v->reply):?> <a class="text text-danger" href="javascript:void(0)">回复消息</a>  <?php else:?><a class="text text-info" href="javascript:void()">普通消息</a>  <?php endif?></td>
                                 <td>
                                     <a class="btn btn-sm btn-success msgshow" href="javascript:void(0)" from="<?=$v->name->nickname?>" to="<?=$v->toname->nickname?>" title="<?=$v->title?>" content="<?=strip_tags($v->content)?>"  send_time="<?=date('Y-m-d H:i:s',$v->send_time)?>" >查看</a>
                                 </td>
                             </tr>
-                        <?endforeach?>
-                    <?else:?>
+                        <?php endforeach?>
+                    <?php else:?>
                         <tr><td colspan="5">暂无消息！</td></tr>
-                    <?endif?>
+                    <?php endif?>
                 </table>
                 <div class="page">
                     <?= LinkPager::widget(['pagination' => $page]) ?>

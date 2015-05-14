@@ -44,14 +44,14 @@ use yii\bootstrap\Alert;
                     <div class="alert alert-success text">
                         <b><?=Yii::$app->session->getFlash('success')?></b>
                     </div>
-                <?endif?>
+                <?php endif?>
 
 
                 <?php if(Yii::$app->session->hasFlash('error')):?>
                     <div class="alert alert-error text">
                         <b><?=Yii::$app->session->getFlash('error')?></b>
                     </div>
-                <?endif?>
+                <?php endif?>
 
                 <?php $form=ActiveForm::begin(['id'=>'sendmsg','enableAjaxValidation'=>true]); ?>
                 <?= $form->field($model,'title')->textInput();?>

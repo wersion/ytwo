@@ -60,21 +60,21 @@ use yii\widgets\linkPager;
                         <?php foreach($msgs as $v):?>
                         <tr>
                             <td><?=$v->id?></td>
-                            <td><?php if($v->reply):?><?=$v->name->nickname?>回复了：<b style="color:#D9534F"><?=$v->title?></b>  <?else:?> <?=$v->title?><?endif?></td>
+                            <td><?php if($v->reply):?><?=$v->name->nickname?>回复了：<b style="color:#D9534F"><?=$v->title?></b>  <?php else:?> <?=$v->title?><?php endif?></td>
                             <td><?=date('Y-m-d H:i:s',$v->send_time)?></td>
                             <td><?=$v->name->nickname?></td>
                             <td>
                                 <?php if($v->status):?>
                                     <a class="btn btn-sm btn-default msgshow" href="javascript:void(0)" from="<?=$v->name->nickname?>" to="<?=Yii::$app->user->identity->nickname?>" title="<?=$v->title?>" content="<?=strip_tags($v->content)?>"  send_time="<?=date('Y-m-d H:i:s',$v->send_time)?>" >已读</a>
-                                <?else:?>
+                                <?php else:?>
                                     <a class="btn btn-sm btn-danger" href="<?=Yii::$app->urlManager->createUrl(['admin/msg/read','id'=>$v->id])?>">未读</a>
-                                <?endif?>
+                                <?php endif?>
                             </td>
                         </tr>
-                        <?endforeach?>
-                    <?else:?>
+                        <?php endforeach?>
+                    <?php else:?>
                         <tr><td colspan="5">暂无消息！</td></tr>
-                    <?endif?>
+                    <?php endif?>
                 </table>
                 <div class="page">
                     <?= LinkPager::widget(['pagination' => $page]) ?>
